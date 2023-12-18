@@ -6,7 +6,7 @@ pragma solidity 0.8.19; // stating solidity version
 //Also can define ranges: pragma solidity >=0.8.18 <0.9.0
 
     /*
-        Created person struct and defined some friends.
+        Now we use a Dinamic Array for storing our friends, and created a function to add friends.
     */
 contract SimpleStorage {
 
@@ -15,12 +15,14 @@ contract SimpleStorage {
         string name;
     }
 
-    Person public Patrick = Person(7, "Patrick"); //asuming creation with fields defined in order
+    Person[] public listOfFriends; //[] empty list
 
-    Person public Patty = Person({ //declaration explicitly relating value to Field
-        favoriteNumber256: 7,
-        name: "Patty"
-    });
+    function addPerson(string memory _name, uint256 _favoriteNumber) public {
+        listOfFriends.push(Person({
+            favoriteNumber256: _favoriteNumber,
+            name: _name
+        }));
+    }
 
     uint256 myFavoriteNumber256; //0 now visibility changed
 
