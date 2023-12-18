@@ -6,22 +6,16 @@ pragma solidity 0.8.19; // stating solidity version
 //Also can define ranges: pragma solidity >=0.8.18 <0.9.0
 
     /*
-        Now we use a Dinamic Array for storing our friends, and created a function to add friends.
+        We stopped using the array and the struct to actually use a mapping, where the key is the name and the
+        value is it's favoriteNumber.
     */
 contract SimpleStorage {
 
-    struct Person {
-        uint256 favoriteNumber256;
-        string name;
-    }
-
-    Person[] public listOfFriends; //[] empty list
+    //when mapping doesn't find the Key, it returns the default value of the Value type 
+    mapping(string => uint256) public nameToFavoriteNumber;
 
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
-        listOfFriends.push(Person({
-            favoriteNumber256: _favoriteNumber,
-            name: _name
-        }));
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 
     uint256 myFavoriteNumber256; //0 now visibility changed
