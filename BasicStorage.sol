@@ -6,12 +6,12 @@ pragma solidity 0.8.19; // stating solidity version
 //Also can define ranges: pragma solidity >=0.8.18 <0.9.0
 
     /*
-        We can set up our favoriteNumber
+        We can set up our favoriteNumber and read it since we changed the visibility
     */
 contract SimpleStorage {
     
-    uint256 favoriteNumber256; //0
+    uint256 public favoriteNumber256; //0 now visibility changed
     function store(uint256 _favoriteNumber) public {
         favoriteNumber256 = _favoriteNumber;
     }
-} 
+}
