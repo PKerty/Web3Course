@@ -6,15 +6,29 @@ pragma solidity 0.8.19; // stating solidity version
 //Also can define ranges: pragma solidity >=0.8.18 <0.9.0
 
     /*
-        We can set up our favoriteNumber and read it using the new function and leaving default visibility
+        Created person struct and defined some friends.
     */
 contract SimpleStorage {
-    
-        uint256 favoriteNumber256; //0 now visibility changed
-        function store(uint256 _favoriteNumber) public {
-            favoriteNumber256 = _favoriteNumber;
-        }
-        function retrieve() public view returns(uint256) {
-            retrun favoriteNumber256;
-        }
+
+    struct Person {
+        uint256 favoriteNumber256;
+        string name;
+    }
+
+    Person public Patrick = Person(7, "Patrick"); //asuming creation with fields defined in order
+
+    Person public Patty = Person({ //declaration explicitly relating value to Field
+        favoriteNumber256: 7,
+        name: "Patty"
+    });
+
+    uint256 myFavoriteNumber256; //0 now visibility changed
+
+    function store( uint256 _favoriteNumber ) public {
+        myFavoriteNumber256 = _favoriteNumber;
+    }
+
+    function retrieve() public view returns(uint256) {
+        return myFavoriteNumber256;
+    }
 }
