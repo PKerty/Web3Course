@@ -32,7 +32,11 @@ contract SimpleStorage {
     }
 }
 
-contract SimpleStorage2 {}
+contract SimpleStorage2 is SimpleStorage{
+    function store(uint256 _favNumber) public override {
+        myFavoriteNumber = _favoriteNumber + 5;
+    }
+}
 
 contract SimpleStorage3 {}
 
